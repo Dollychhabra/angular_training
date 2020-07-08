@@ -1,0 +1,36 @@
+<!-- <a
+  *ngIf="type == 'link'"
+  [href]="link"
+  [ngClass]="[
+    sizeClassName,
+    textColorClassName,
+    backgroundColorClassName,
+    textSizeClassName
+  ]"
+  ><i [class]="iconClassName" *ngIf="iconClassName"></i>
+</a>
+<button
+  (click)="onClick()"
+  *ngIf="type == 'button'"
+  [ngClass]="[
+    sizeClassName,
+    textColorClassName,
+    backgroundColorClassName,
+    textSizeClassName
+  ]"
+  [class]="class"
+  [(ngModel)]="model"
+>
+  <i [class]="iconClassName" *ngIf="iconClassName"></i>
+</button> -->
+<button
+  [class]="class"
+  *ngIf="type == 'button'"
+  (parentFunc)="(parentFunc)"
+  (click)="onClick()"
+>
+  <i [class]="iconClassName" *ngIf="iconClassName"></i>
+</button>
+<!-- <button (click)="onClick()" *ngIf="type =='button'"
+    [ngClass]="[sizeClassName, textColorClassName, backgroundColorClassName, textSizeClassName]"><i
+        [class]="iconClassName" *ngIf="iconClassName"></i></button> -->

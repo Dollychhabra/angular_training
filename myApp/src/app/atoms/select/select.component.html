@@ -1,0 +1,32 @@
+<!-- <div>
+  <button #origin>
+    <ng-template [ngIf]="!isOpen" [ngIfElse]="searchTpl">
+      {{ label }}
+    </ng-template>
+
+    <ng-template #searchTpl>
+      <input [formControl]="searchControl" />
+    </ng-template>
+  </button>
+
+  <ng-template #dropdown>
+    // options list
+  </ng-template>
+</div> -->
+<!-- <ng-select
+  [allowClear]="true"
+  [items]="items"
+  (data)="refreshValue($event)"
+  (selected)="selected($event)"
+  placeholder="Price filter"
+>
+</ng-select> -->
+<select id="sort-by" (change)="onChange($event)">
+  <option *ngFor="let opt of options" [value]="opt.value">{{
+    opt.name
+  }}</option>
+  <!-- <option value="" selected disabled hidden>Sort By</option>
+    <option value="Name">Name</option>
+    <option value="Low">Show Low to High Price</option>
+    <option value="High">Show High to Low Price</option> -->
+</select>
