@@ -1,0 +1,42 @@
+h1,
+p {
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.frame {
+  width: 100%;
+  border: 1px solid black;
+  border-style: double;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  background-color: #5feac3d1;
+  border-radius: 15px;
+}
+
+.frame {
+  animation: zoomeffect 10s infinite;
+}
+
+@keyframes zoomeffect {
+  0% {
+    justify-content: center;
+    transform: scale(1, 1) rotateY(360deg);
+  }
+  50% {
+    justify-content: center;
+    transform: scale(2, 2);
+  }
+  100% {
+    justify-content: center;
+    transform: scale(1, 1) rotateY(360deg);
+  }
+}
+
