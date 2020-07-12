@@ -19,24 +19,20 @@ p {
   justify-content: center;
   background-color: #5feac3d1;
   border-radius: 15px;
+  max-width: 40%;
 }
 
 .frame {
-  animation: zoomeffect 10s infinite;
+  animation: zoomeffect 2s infinite;
 }
 
 @keyframes zoomeffect {
   0% {
     justify-content: center;
-    transform: scale(1, 1) rotateY(360deg);
+    transform: scale(0, 0) rotateY(306deg);
   }
   50% {
     justify-content: center;
     transform: scale(2, 2);
   }
-  100% {
-    justify-content: center;
-    transform: scale(1, 1) rotateY(360deg);
-  }
 }
-

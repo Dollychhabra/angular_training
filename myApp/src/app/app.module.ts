@@ -8,9 +8,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonModule } from './atoms/button/button.module';
 import { EcommerceModule } from './organisms/ecommerce/ecommerce.module';
 import { SelectModule } from './atoms/select/select.module';
+import {FloatingBannerComponent} from './organisms/floating-banner/floating-banner.component';
+import { StudentDataModule } from './organisms/student-data/student-data.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FloatingBannerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -19,6 +21,7 @@ import { SelectModule } from './atoms/select/select.module';
     ButtonModule,
     SelectModule,
     EcommerceModule,
+    StudentDataModule
   ],
   providers: [],
   bootstrap: [AppComponent],
