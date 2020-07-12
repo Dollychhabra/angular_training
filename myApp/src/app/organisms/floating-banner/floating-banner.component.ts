@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-floating-banner',
   templateUrl: './floating-banner.component.html',
-  styleUrls: ['./floating-banner.component.scss','../../breakpoints.scss']
+  styleUrls: ['./floating-banner.component.scss']
 })
 export class FloatingBannerComponent implements OnInit {
 
