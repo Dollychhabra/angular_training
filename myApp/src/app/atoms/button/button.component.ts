@@ -18,10 +18,12 @@ export class ButtonComponent implements OnInit, OnChanges {
   @Input() link: string;
   @Input() icon: string;
   @Input() size: string;
+  @Input() buttonText: string;
   @Input() textSize: string;
   @Input() textColor: string;
   @Input() backgroundColor: string;
   @Input() class: string;
+  @Input() classname: string;
 
   @Output('parentFunc') parentFunc: EventEmitter<any> = new EventEmitter();
 

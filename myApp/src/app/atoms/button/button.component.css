@@ -1,4 +1,4 @@
-@blue: #125688;
+/* @blue: #125688;
 @black: #25272a;
 @gray: #a5a7aa;
 @white: white;
@@ -9,11 +9,9 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
   text-decoration: none;
   cursor: pointer;
   height: 30px;
-  padding: 0;
 }
 
 .background-color-black {
@@ -43,4 +41,4 @@ a {
 
 .text-size-xs {
   font-size: 6px;
-}
+} */

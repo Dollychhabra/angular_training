@@ -1,0 +1,29 @@
+.countdown-container {
+  flex: 1 1 0;
+  flex-wrap: wrap;
+}
+
+.timer-value-container,
+.timer-input-container,
+.timer-timestamp-container,
+.star-pause-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 575.98px) {
+  .timer-value-container,
+  .timer-input-container,
+  .timer-timestamp-container,
+  .star-pause-container {
+    width: 100%;
+  }
+}
+
+.timer-timestamp-section {
+  border: 1px solid black;
+  height: 150px;
+  width: 300px;
+}

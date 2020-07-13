@@ -8,11 +8,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonModule } from './atoms/button/button.module';
 import { EcommerceModule } from './organisms/ecommerce/ecommerce.module';
 import { SelectModule } from './atoms/select/select.module';
-import {FloatingBannerComponent} from './organisms/floating-banner/floating-banner.component';
+import { FloatingBannerComponent } from './organisms/floating-banner/floating-banner.component';
 import { StudentDataModule } from './organisms/student-data/student-data.module';
+import { CountdownTimerMainIoModule } from './organisms/countdown-timer-main-io/countdown-timer-main-io.module';
+import { Routes, RouterModule } from '@angular/router';
+import { DynamicDivModule } from './organisms/dynamic-div/dynamic-div.module';
+import { CountdownTimerSubjectComponent } from './organisms/countdown-timer-subject/countdown-timer-subject.component';
+
+const appRoutes: Routes = [{ path: '', component: FloatingBannerComponent }];
 
 @NgModule({
-  declarations: [AppComponent, FloatingBannerComponent],
+  declarations: [AppComponent, FloatingBannerComponent, CountdownTimerSubjectComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,7 +27,10 @@ import { StudentDataModule } from './organisms/student-data/student-data.module'
     ButtonModule,
     SelectModule,
     EcommerceModule,
-    StudentDataModule
+    StudentDataModule,
+    CountdownTimerMainIoModule,
+    DynamicDivModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent],
