@@ -13,6 +13,8 @@ export class StudentDataComponent implements OnInit {
   isDesc: boolean = false;
   column: string = 'Section';
   categories: [];
+  count: number = 0;
+  recordCopy: Array<any>;
 
   ngOnInit(): void {
     this.records = [
@@ -65,24 +67,27 @@ export class StudentDataComponent implements OnInit {
         Sub3: 'Science',
       },
     ];
-    // this.sort(this.column);
+    this.recordCopy = JSON.parse(JSON.stringify(this.records));
   }
 
   sort(property) {
-    this.isDesc = !this.isDesc; //change the direction
-    this.column = property;
-    let direction = this.isDesc ? 1 : -1;
-
-    this.records.sort(function (a, b) {
-      if (a[property] < b[property]) {
-        console.log('first ', -1 * direction);
-        return -1 * direction;
-      } else if (a[property] > b[property]) {
-        console.log('second ', 1 * direction);
-        return 1 * direction;
-      } else {
-        return 0;
-      }
-    });
+    this.count = this.count + 1;
+    if (this.count !== 3) {
+      this.isDesc = !this.isDesc; //change the direction
+      this.column = property;
+      let direction = this.isDesc ? 1 : -1;
+      this.records.sort(function (a, b) {
+        if (a[property] < b[property]) {
+          return -1 * direction;
+        } else if (a[property] > b[property]) {
+          return 1 * direction;
+        } else {
+          return 0;
+        }
+      });
+    } else {
+      this.records = JSON.parse(JSON.stringify(this.recordCopy));
+      this.count = 0;
+    }
   }
 }

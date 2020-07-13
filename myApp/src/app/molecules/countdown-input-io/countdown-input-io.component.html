@@ -1,0 +1,20 @@
+<div class="timer-input-section">
+  <input type="number" class="mb-4" #countdown />
+  <div class="btn-group d-block">
+    <app-button
+      class="mr-3"
+      type="button"
+      buttonText="Start/Pause"
+      (startFunc)="(startFunc)"
+      (click)="onClick()"
+      classname="btn-outline-primary"
+    ></app-button>
+    <app-button
+      type="button"
+      buttonText="Reset"
+      classname="btn-outline-primary"
+      (reset)="(reset)"
+      (click)="onClickReset()"
+    ></app-button>
+  </div>
+</div>

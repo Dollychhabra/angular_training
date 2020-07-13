@@ -299,11 +299,55 @@
   }
 </style>
 
+<div class="container mt-4">
+  <div clas="row">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Banner</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/ecommerce" routerLinkActive="active"
+          >Ecommerce</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/countdown" routerLinkActive="active"
+          >Countdown</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/countdown-subject"
+          routerLinkActive="active"
+          >Countdown Sub</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/student-data" routerLinkActive="active"
+          >Student Datab</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dynamic-div" routerLinkActive="active"
+          >Dynamic div</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+
 <!-- <app-ecommerce></app-ecommerce> -->
 <!-- <app-floating-banner></app-floating-banner> -->
-<app-student-data></app-student-data>
-
-
+<!-- <app-student-data></app-student-data> -->
+<!-- <app-countdown-timer-main-io></app-countdown-timer-main-io> -->
+<router-outlet></router-outlet>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
@@ -312,4 +356,4 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
