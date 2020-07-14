@@ -13,12 +13,12 @@ import { StudentDataModule } from './organisms/student-data/student-data.module'
 import { CountdownTimerMainIoModule } from './organisms/countdown-timer-main-io/countdown-timer-main-io.module';
 import { Routes, RouterModule } from '@angular/router';
 import { DynamicDivModule } from './organisms/dynamic-div/dynamic-div.module';
-import { CountdownTimerSubjectComponent } from './organisms/countdown-timer-subject/countdown-timer-subject.component';
+import { CountdownTimerSubjectModule } from './organisms/countdown-timer-subject/countdown-timer-subject.module';
 
 const appRoutes: Routes = [{ path: '', component: FloatingBannerComponent }];
 
 @NgModule({
-  declarations: [AppComponent, FloatingBannerComponent, CountdownTimerSubjectComponent],
+  declarations: [AppComponent, FloatingBannerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,6 +30,7 @@ const appRoutes: Routes = [{ path: '', component: FloatingBannerComponent }];
     StudentDataModule,
     CountdownTimerMainIoModule,
     DynamicDivModule,
+    CountdownTimerSubjectModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [],

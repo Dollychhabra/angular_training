@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { getTimestamp } from './util';
+import { getTimestamp } from '../../util';
 
 @Component({
   selector: 'app-countdown-timer-main-io',
@@ -25,16 +25,18 @@ export class CountdownTimerMainIoComponent implements OnInit {
 
   startTime(value): void {
     this.timeLeft = this.timeLeft || value;
-    if (this.flagTimer === 'start') {
-      this.getTimestampArray(this.pausedDateStr);
-      this.pauseCount = this.pauseCount + 1;
-      clearInterval(this.interval);
-      this.flagTimer = 'pause';
-    } else {
-      this.getTimestampArray(this.startDateStr);
-      this.startCount = this.startCount + 1;
-      this.flagTimer = 'start';
-      this.start();
+    if (this.timeLeft) {
+      if (this.flagTimer === 'start') {
+        this.getTimestampArray(this.pausedDateStr);
+        this.pauseCount = this.pauseCount + 1;
+        clearInterval(this.interval);
+        this.flagTimer = 'pause';
+      } else {
+        this.getTimestampArray(this.startDateStr);
+        this.startCount = this.startCount + 1;
+        this.flagTimer = 'start';
+        this.start();
+      }
     }
   }
 
@@ -60,5 +62,6 @@ export class CountdownTimerMainIoComponent implements OnInit {
     this.startCount = 0;
     this.pauseCount = 0;
     this.timestamp = [];
+    this.flagTimer = 'pause';
   }
 }

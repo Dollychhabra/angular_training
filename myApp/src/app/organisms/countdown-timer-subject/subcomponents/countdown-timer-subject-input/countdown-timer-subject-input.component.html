@@ -1,19 +1,18 @@
 <div class="timer-input-section">
-  <input type="number" class="mb-4" #countdown required/>
-  <div class="btn-group d-block">
+  <label class="font-weight-bold pr-1">Enter timer limit: </label>
+  <input type="number" class="mb-4" #countdown />
+  <div class="btn-group d-block text-right">
     <app-button
       class="mr-3"
       type="button"
       buttonText="Start/Pause"
-      (startFunc)="(startFunc)"
-      (click)="onClick()"
+      (click)="sendMessage()"
       classname="btn-outline-primary"
     ></app-button>
     <app-button
       type="button"
       buttonText="Reset"
       classname="btn-outline-primary"
-      (reset)="(reset)"
       (click)="onClickReset()"
     ></app-button>
   </div>
