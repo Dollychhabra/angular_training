@@ -1,10 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { EcommerceDataService } from './ecommerce-data.service';
 
 @Component({
   selector: 'app-ecommerce',
   templateUrl: './ecommerce.component.html',
   styleUrls: ['./ecommerce.component.css'],
+  providers: [EcommerceDataService],
 })
 export class EcommerceComponent implements OnInit {
   grid = true;
@@ -22,20 +24,24 @@ export class EcommerceComponent implements OnInit {
     { name: 'High to Low', value: 'High' },
   ];
 
-  constructor(private router: Router, private activeRoute: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private activeRoute: ActivatedRoute,
+    private dataService: EcommerceDataService
+  ) {
+    this.dataService.subject.subscribe((data) => {
+      if (data) {
+        console.log(data);
+        this.prodData = data;
+      }
+    });
+  }
 
   ngOnInit() {
     this.displayMode = this.activeRoute.snapshot.queryParams.mode
       ? parseInt(this.activeRoute.snapshot.queryParams.mode)
       : 1;
-    this.prodData = [
-      { name: 'item 1', price: 1200 },
-      { name: 'item 2', price: 2000 },
-      { name: 'item 3', price: 1000 },
-      { name: 'item 4', price: 2500 },
-      { name: 'item 5', price: 3000 },
-      { name: 'item 6', price: 850 },
-    ];
+    this.dataService.sendData();
     // Default sort order on page load
     this.prodData = this.prodData.sort((low, high) => low.price - high.price);
   }
