@@ -9,7 +9,7 @@ import { CountdownTimerSubjectTimestampModule } from './subcomponents/countdown-
 import { CountdownTimerSubjectClicksModule } from './subcomponents/countdown-timer-subject-clicks/countdown-timer-subject-clicks.module';
 
 const routes: Routes = [
-  { path: 'countdown-subject', component: CountdownTimerSubjectComponent },
+  { path: '', component: CountdownTimerSubjectComponent },
 ];
 
 @NgModule({

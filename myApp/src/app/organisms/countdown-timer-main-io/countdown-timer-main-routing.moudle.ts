@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CountdownTimerMainIoComponent } from './countdown-timer-main-io.component';
 
 const routes: Routes = [
-  { path: 'countdown', component: CountdownTimerMainIoComponent },
+  { path: '', component: CountdownTimerMainIoComponent },
 ];
 
 @NgModule({

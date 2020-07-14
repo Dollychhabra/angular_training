@@ -4,7 +4,7 @@ import { getTimestamp } from '../../util';
 @Component({
   selector: 'app-countdown-timer-main-io',
   templateUrl: './countdown-timer-main-io.component.html',
-  styleUrls: ['./countdown-timer-main-io.component.css'],
+  styleUrls: ['./countdown-timer-main-io.component.scss'],
 })
 export class CountdownTimerMainIoComponent implements OnInit {
   countdown: number;

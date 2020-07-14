@@ -1,5 +1,12 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  OnDestroy,
+} from '@angular/core';
 import { CountdownTimerSubjectService } from '../../countdown-timer-subject.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-countdown-timer-subject-input',
@@ -8,19 +15,23 @@ import { CountdownTimerSubjectService } from '../../countdown-timer-subject.serv
 })
 export class CountdownTimerSubjectInputComponent implements OnInit {
   countdown: number;
+  subscription: Subscription;
+  value : number;
 
-  @ViewChild('countdown', { static: true }) input: ElementRef;
+  // @ViewChild('countdown', { static: true }) input: ElementRef;
 
-  constructor(private messageService: CountdownTimerSubjectService) {}
+  constructor(private messageService: CountdownTimerSubjectService) {
+  }
 
   ngOnInit(): void {}
 
   sendMessage(): void {
     // send message to subscribers via observable subject
-    this.messageService.setMessage(this.input.nativeElement.value);
+    this.messageService.setMessage(this.countdown);
   }
 
   onClickReset(): void {
+    this.countdown = null;
     this.messageService.clearMessages();
   }
 }

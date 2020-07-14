@@ -1,3 +1,6 @@
+@import "../../../styles-variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
 .countdown-container {
   flex: 1 1 0;
   flex-wrap: wrap;
@@ -7,23 +10,16 @@
 .timer-input-container,
 .timer-timestamp-container,
 .star-pause-container {
-  width: 50%;
+  width: calc(50% - 48px);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  min-height: 150px;
 }
 
-@media (max-width: 575.98px) {
+@include media-breakpoint-down(sm) {
   .timer-value-container,
   .timer-input-container,
   .timer-timestamp-container,
   .star-pause-container {
-    width: 100%;
+    width: calc(100% - 48px);
   }
-}
-
-.timer-timestamp-section {
-  border: 1px solid black;
-  height: 150px;
-  width: 300px;
 }

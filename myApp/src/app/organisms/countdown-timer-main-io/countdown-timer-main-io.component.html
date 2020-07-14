@@ -1,16 +1,16 @@
 <div class="container">
   <div class="countdown-container d-md-flex mt-5">
     <app-countdown-timer-io
-      class="text-center timer-value-container mb-4"
+      class="text-center timer-value-container justify-content-center align-items-center mx-4 mb-4 border border-dark"
       [timerValue]="timeLeft"
     ></app-countdown-timer-io>
     <app-countdown-input-io
-      class="timer-input-container mb-4"
+      class="timer-input-container mb-4 mx-4 border border-dark justify-content-center align-items-center"
       (startFunc)="startTime($event)"
       (reset)="reset()"
       countdown="countdown"
     ></app-countdown-input-io>
-    <div class="timer-timestamp-container mb-4">
+    <div class="timer-timestamp-container mx-4 mb-4 justify-content-center align-items-center">
       <div class="p-3 text-center timer-timestamp-section">
         <div *ngFor="let time of timestamp">
           <app-countdown-timestamp-io
@@ -21,7 +21,7 @@
       </div>
     </div>
     <app-start-pause-click-io
-      class="star-pause-container mb-4"
+      class="star-pause-container d-flex justify-content-around align-items-center mx-4 mb-4"
       [startCount]="startCount"
       [pauseCount]="pauseCount"
     ></app-start-pause-click-io>

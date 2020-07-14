@@ -1,1 +1,5 @@
-<p>dynamic-div works!</p>
+<div class="container d-md-flex flex-wrap justify-content-start mt-4">
+  <div class="content" *ngFor="let container of containers; let i = index">
+    <div appDynamicDiv [value]="i + 1"></div>
+  </div>
+</div>
