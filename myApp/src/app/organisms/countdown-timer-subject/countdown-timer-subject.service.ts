@@ -39,11 +39,8 @@ export class CountdownTimerSubjectService {
         this.flagTimer = true;
         this.interval = setInterval(() => {
           if (this.timeLeft > 0) {
-            console.log('in first');
-
             this.subject.next({ timer: this.timeLeft-- });
           } else {
-            console.log('in second');
             this.subject.next({ timer: this.timeLeft });
           }
         }, 1000);
