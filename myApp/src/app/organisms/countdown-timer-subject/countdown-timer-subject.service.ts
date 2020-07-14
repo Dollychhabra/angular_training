@@ -13,16 +13,17 @@ export class CountdownTimerSubjectService {
   pausedDateStr: string = 'Paused at';
   startCount: number = 0;
   pauseCount: number = 0;
+  pausedAtArr: Array<any>[];
 
   subject = new Subject<any>();
   subTimestamp = new Subject<any>();
   subCount = new Subject<any>();
+  subPaused = new Subject<any>();
 
   constructor() {}
 
   setMessage(message: number) {
     this.timeLeft = this.timeLeft || message;
-
     if (this.timeLeft) {
       if (this.flagTimer === false) {
         this.subTimestamp.next({
@@ -44,6 +45,9 @@ export class CountdownTimerSubjectService {
           }
         }, 1000);
       } else {
+        this.flagTimer = false;
+        clearInterval(this.interval);
+        this.subPaused.next({ timer: this.timeLeft });
         this.subTimestamp.next({
           timestamp: getTimestamp(),
           str: this.pausedDateStr,
@@ -53,15 +57,19 @@ export class CountdownTimerSubjectService {
           startCount: this.startCount,
           pauseCount: this.pauseCount,
         });
-        this.flagTimer = false;
-        clearInterval(this.interval);
       }
     }
   }
 
   clearMessages() {
-    this.subject.next(void 0);
+    clearInterval(this.interval);
+    this.timeLeft = null;
+    this.subject.next({});
+    this.startCount = 0;
+    this.pauseCount = 0;
     this.subCount.next({});
     this.subTimestamp.next();
+    this.subPaused.next();
+    this.flagTimer = false;
   }
 }

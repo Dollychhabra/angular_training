@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-ecommerce',
@@ -7,8 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EcommerceComponent implements OnInit {
   grid = true;
-  displayMode = 1;
+  displayMode: number;
   prodData: any[] = [];
+  filterValue: string;
 
   menu = [
     { name: 'grid', value: 1 },
@@ -20,9 +22,12 @@ export class EcommerceComponent implements OnInit {
     { name: 'High to Low', value: 'High' },
   ];
 
-  constructor() {}
+  constructor(private router: Router, private activeRoute: ActivatedRoute) {}
 
   ngOnInit() {
+    this.displayMode = this.activeRoute.snapshot.queryParams.mode
+      ? parseInt(this.activeRoute.snapshot.queryParams.mode)
+      : 1;
     this.prodData = [
       { name: 'item 1', price: 1200 },
       { name: 'item 2', price: 2000 },
@@ -37,9 +42,13 @@ export class EcommerceComponent implements OnInit {
 
   onDisplayModeChange(mode: number): void {
     this.displayMode = mode;
+    this.router.navigate(['/ecommerce'], {
+      queryParams: { mode: mode, filter: this.filterValue },
+    });
   }
 
   sort(event: any) {
+    this.filterValue = event.target.value;
     switch (event.target.value) {
       case 'Low': {
         this.prodData = this.prodData.sort(

@@ -5,6 +5,7 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef,
+  Input,
 } from '@angular/core';
 
 @Component({
@@ -13,6 +14,7 @@ import {
   styleUrls: ['./countdown-input-io.component.css'],
 })
 export class CountdownInputIoComponent implements OnInit {
+  @Input() pausedAt: Array<any>[];
   @Output('startFunc') startFunc: EventEmitter<any> = new EventEmitter();
   @Output('reset') reset: EventEmitter<any> = new EventEmitter();
   @ViewChild('countdown', { static: true }) input: ElementRef;
