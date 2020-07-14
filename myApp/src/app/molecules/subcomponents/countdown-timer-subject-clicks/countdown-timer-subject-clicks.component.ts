@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CountdownTimerSubjectService } from '../../countdown-timer-subject.service';
+import { CountdownTimerSubjectService } from '../../../organisms/countdown-timer-subject/countdown-timer-subject.service';
 import { Subscription } from 'rxjs';
 
 @Component({

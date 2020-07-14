@@ -5,8 +5,9 @@ import {
   ElementRef,
   OnDestroy,
 } from '@angular/core';
-import { CountdownTimerSubjectService } from '../../countdown-timer-subject.service';
+import { CountdownTimerSubjectService } from '../../../organisms/countdown-timer-subject/countdown-timer-subject.service';
 import { Subscription } from 'rxjs';
+import { consoleTestResultHandler } from 'tslint/lib/test';
 
 @Component({
   selector: 'app-countdown-timer-subject-input',
@@ -16,14 +17,23 @@ import { Subscription } from 'rxjs';
 export class CountdownTimerSubjectInputComponent implements OnInit {
   countdown: number;
   subscription: Subscription;
-  value : number;
+  value: number;
+  timeLeftArr: Array<any> = [];
 
   // @ViewChild('countdown', { static: true }) input: ElementRef;
 
-  constructor(private messageService: CountdownTimerSubjectService) {
-  }
+  constructor(private messageService: CountdownTimerSubjectService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.subscription = this.messageService.subPaused.subscribe((message) => {
+      if (message) {
+        if (this.timeLeftArr.length > 4) this.timeLeftArr.shift();
+        this.timeLeftArr.push(message.timer);
+      } else {
+        this.timeLeftArr = [];
+      }
+    });
+  }
 
   sendMessage(): void {
     // send message to subscribers via observable subject

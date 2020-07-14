@@ -6,17 +6,19 @@ import { getTimestamp } from '../../util';
   providedIn: 'root',
 })
 export class CountdownTimerSubjectService {
-  timeLeft: number = 1000;
+  timeLeft: number;
   flagTimer: boolean = false;
   interval: any;
   startDateStr: string = 'Started at';
   pausedDateStr: string = 'Paused at';
   startCount: number = 0;
   pauseCount: number = 0;
+  pausedAtArr: Array<any>[];
 
   subject = new Subject<any>();
   subTimestamp = new Subject<any>();
   subCount = new Subject<any>();
+  subPaused = new Subject<any>();
 
   constructor() {}
 
@@ -37,14 +39,18 @@ export class CountdownTimerSubjectService {
         this.flagTimer = true;
         this.interval = setInterval(() => {
           if (this.timeLeft > 0) {
+            console.log('in first');
+
             this.subject.next({ timer: this.timeLeft-- });
           } else {
+            console.log('in second');
             this.subject.next({ timer: this.timeLeft });
           }
         }, 1000);
       } else {
         this.flagTimer = false;
         clearInterval(this.interval);
+        this.subPaused.next({ timer: this.timeLeft });
         this.subTimestamp.next({
           timestamp: getTimestamp(),
           str: this.pausedDateStr,
@@ -66,6 +72,7 @@ export class CountdownTimerSubjectService {
     this.pauseCount = 0;
     this.subCount.next({});
     this.subTimestamp.next();
+    this.subPaused.next();
     this.flagTimer = false;
   }
 }

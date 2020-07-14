@@ -19,6 +19,7 @@ export class CountdownTimerMainIoComponent implements OnInit {
   pausedDateStr: string = 'Paused at ';
   time;
   timestamp: Array<any> = [];
+  pausedAtArr: Array<any> = [];
   constructor() {}
 
   ngOnInit(): void {}
@@ -29,6 +30,7 @@ export class CountdownTimerMainIoComponent implements OnInit {
       if (this.flagTimer === 'start') {
         this.getTimestampArray(this.pausedDateStr);
         this.pauseCount = this.pauseCount + 1;
+        this.getPausedArray();
         clearInterval(this.interval);
         this.flagTimer = 'pause';
       } else {
@@ -50,6 +52,11 @@ export class CountdownTimerMainIoComponent implements OnInit {
     }, 1000);
   }
 
+  getPausedArray() {
+    if (this.pausedAtArr.length > 2) this.pausedAtArr.shift();
+    this.pausedAtArr.push(this.timeLeft);
+  }
+
   getTimestampArray(str) {
     this.dateStr = getTimestamp();
     if (this.timestamp.length > 4) this.timestamp.shift();
@@ -57,11 +64,13 @@ export class CountdownTimerMainIoComponent implements OnInit {
   }
 
   reset() {
+    clearInterval(this.interval);
     this.timeLeft = null;
     this.dateStr = ' ';
     this.startCount = 0;
     this.pauseCount = 0;
     this.timestamp = [];
     this.flagTimer = 'pause';
+    this.pausedAtArr = [];
   }
 }
