@@ -11,28 +11,64 @@ p {
 }
 
 .frame {
-  width: 100%;
-  border: 1px solid black;
+  width: 10%;
+  border: 1px solid #fff;
   border-style: double;
   padding: 20px;
   display: flex;
   justify-content: center;
-  background-color: #5feac3d1;
+  background-color: red;
   border-radius: 15px;
   max-width: 40%;
+  color: #fff;
 }
 
 .frame {
-  animation: zoomeffect 2s infinite;
+  animation: zoomeffect 4s infinite;
 }
 
 @keyframes zoomeffect {
   0% {
     justify-content: center;
-    transform: scale(0, 0) rotateY(306deg);
+    transform: scale(0, 0);
+    width: 10%;
   }
   50% {
     justify-content: center;
-    transform: scale(2, 2);
+    transform: scale(1, 1);
+    width: 80%;
+    font-size: 5rem;
   }
+}
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(200, 200);
+    opacity: 0;
+  }
+}
+
+.ripple::after {
+  animation: ripple 2s ease infinite;
 }
