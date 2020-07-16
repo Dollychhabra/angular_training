@@ -5,8 +5,8 @@ import { Directive, Renderer2, ElementRef, OnInit, Input } from '@angular/core';
 })
 export class DynamicDivDirective implements OnInit {
   value: number;
-  size: number = 20;
-  count: number = 20;
+  size: number = 16;
+  count: number = 16;
   num: number;
 
   constructor(private renderer: Renderer2, private el: ElementRef) {
@@ -17,10 +17,7 @@ export class DynamicDivDirective implements OnInit {
     }
     let that = this;
     window.onscroll = function (ev) {
-      if (
-        window.innerHeight + window.scrollY >
-        document.body.offsetHeight - 0.1
-      ) {
+      if (window.innerHeight + window.scrollY > document.body.offsetHeight) {
         that.num = that.count + 1;
         that.count = that.count + 4;
         for (let i = that.num; i <= that.count; i++) {
