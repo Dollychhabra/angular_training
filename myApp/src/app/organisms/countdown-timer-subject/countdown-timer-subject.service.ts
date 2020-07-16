@@ -6,14 +6,7 @@ import { getTimestamp } from '../../util';
   providedIn: 'root',
 })
 export class CountdownTimerSubjectService {
-  timeLeft: number;
-  flagTimer: boolean = false;
   interval: any;
-  startDateStr: string = 'Started at';
-  pausedDateStr: string = 'Paused at';
-  startCount: number = 0;
-  pauseCount: number = 0;
-  pausedAtArr: Array<any>[];
 
   subject = new Subject<any>();
   subTimestamp = new Subject<any>();
@@ -22,54 +15,32 @@ export class CountdownTimerSubjectService {
 
   constructor() {}
 
-  setMessage(message: number) {
-    this.timeLeft = this.timeLeft || message;
-    if (this.timeLeft) {
-      if (this.flagTimer === false) {
-        this.subTimestamp.next({
-          timestamp: getTimestamp(),
-          str: this.startDateStr,
-        });
-        this.startCount = this.startCount + 1;
-        this.subCount.next({
-          startCount: this.startCount,
-          pauseCount: this.pauseCount,
-        });
+  setTimer(message: number) {
+    this.subject.next({ timer: message });
+  }
 
-        this.flagTimer = true;
-        this.interval = setInterval(() => {
-          if (this.timeLeft > 0) {
-            this.subject.next({ timer: this.timeLeft-- });
-          } else {
-            this.subject.next({ timer: this.timeLeft });
-          }
-        }, 1000);
-      } else {
-        this.flagTimer = false;
-        clearInterval(this.interval);
-        this.subPaused.next({ timer: this.timeLeft });
-        this.subTimestamp.next({
-          timestamp: getTimestamp(),
-          str: this.pausedDateStr,
-        });
-        this.pauseCount = this.pauseCount + 1;
-        this.subCount.next({
-          startCount: this.startCount,
-          pauseCount: this.pauseCount,
-        });
-      }
-    }
+  setSubTimstamp(message) {
+    this.subTimestamp.next(message);
+  }
+
+  setCount(start, pause) {
+    this.subCount.next({ startCount: start, pauseCount: pause });
+  }
+
+  pausedAt(message) {
+    this.subPaused.next({ timer: message });
+  }
+
+  getTimeLeft(interval) {
+    this.interval = interval;
   }
 
   clearMessages() {
-    clearInterval(this.interval);
-    this.timeLeft = null;
-    this.subject.next({});
-    this.startCount = 0;
-    this.pauseCount = 0;
-    this.subCount.next({});
+    // this.timeLeft = null;
+    this.subject.next({ reset: true });
+    this.subCount.next();
     this.subTimestamp.next();
     this.subPaused.next();
-    this.flagTimer = false;
+    // this.flagTimer = false;
   }
 }

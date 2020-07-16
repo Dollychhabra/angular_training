@@ -16,13 +16,7 @@ export class CountdownTimerSubjectComponent implements OnInit {
 
   ngOnInit() {}
 
-  // sendMessage(): void {
-  //   // send message to subscribers via observable subject
-  //   this.messageService.sendMessage(this.input.nativeElement.value);
-  // }
-
   clearMessages(): void {
-    // clear messages
     this.messageService.clearMessages();
   }
 }

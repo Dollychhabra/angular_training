@@ -31,7 +31,6 @@ export class EcommerceComponent implements OnInit {
   ) {
     this.dataService.subject.subscribe((data) => {
       if (data) {
-        console.log(data);
         this.prodData = data;
       }
     });
