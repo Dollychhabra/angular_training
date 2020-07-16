@@ -2,7 +2,7 @@
   <div class="table-responsive">
     <table class="table">
       <tr>
-        <th *ngFor="let key of records[0] | keys" (click)="sort(key)">
+        <th *ngFor="let key of records[0] | keys" (click)="sort(key)" class="header-hover">
           {{ key }}
         </th>
       </tr>
