@@ -24,7 +24,7 @@
     "bootstrap": "^4.5.0",
     "bootstrap-4-grid": "^3.4.0",
     "font-awesome": "^4.7.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "postcss-atrule-bem": "^4.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
